@@ -1,0 +1,12 @@
+
+div{
+  outline : 1px solid #efefef; 
+}
+#words{
+  float : left; 
+  width : 300px;
+}
+#cloud{
+  float : left; 
+  width : 400px;
+}
