@@ -2,94 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>StormCloud</title>
+    <link rel="stylesheet" href="http://mtcanvas.com/css/reset.css">
     <link rel="stylesheet" href="style.css">
+    
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="http://zevanrosser.github.com/jquery.grab/jquery.grab.js"></script>
-    <script>
-      $(function(){
-        
-        
-        function randomize(a, b){
-          return Math.round(Math.random()*2) - 1;
-        }
-        
-        function StormCloud(){
-          var self = this;
-          self.elem = $("#content").grab(self); 
-          
-          self.wordMap = {};
-          
-          //new Word({text:"test"});
-                    
-          if (localStorage.stormCloud){
-            self.wordMap = JSON.parse(localStorage.stormCloud); 
-            for (var i in self.wordMap){
-             new Word({text : i}).elem.appendTo(self.words); 
-            }
-          }
-          
-          self.save = function(){
-            localStorage.stormCloud = JSON.stringify(self.wordMap);
-          };
-          
-         
-          
-          self.render = function(){
-            
-            self.cloud.html("");
-            
-            var words = [];
-            for (var i in self.wordMap){
-              words.push(i);
-            }
-            
-            words.sort(randomize);
-            
-            for (var i = 0; i < words.length; i++){
-              $("<span>",{
-                text : words[i] + " ", 
-                css : {
-                  fontSize : 10 + Math.random() * 30 
-                }
-              }).appendTo(self.cloud); 
-            }
-          };
-          
-          setInterval(self.render, 1000);
-          
-          self.addWord.submit(function(e){
-            e.preventDefault();
-            var value = $.trim(self.word.val());
-            if (value.length > 0){
-              self.word.val("");
-              new Word({text:value}).elem.appendTo(self.words);
-              self.render();
-              self.save();
-            }
-          });
-          
-        }
-        
-        function Word(params){
-          this.elem = $("#word").grab(this, params);
-          this.value = params.text;
-          if (stormCloud) stormCloud.wordMap[params.text] = 1;
-          this.ex.click($.proxy(this.remove, this));
-        }
-        Word.prototype.remove = function(){
-          this.elem.remove();
-          delete stormCloud.wordMap[this.value];
-          stormCloud.render();
-          stormCloud.save();
-          //console.log(stormCloud.wordMap, Math.random());
-        };
-        
-        var stormCloud = new StormCloud();
-        
-        
-      });
-    </script>
+    <script src="storm-cloud.js"></script>
    
   </head>
   <body>

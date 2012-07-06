@@ -1,12 +1,53 @@
-
+@import url(http://fonts.googleapis.com/css?family=Gudea);
+body,html{
+  font-family : "Gudea", sans-serif; 
+  height : 100%; 
+  overflow : hidden;
+}
 div{
-  outline : 1px solid #efefef; 
+  position : relative;
+}
+h2{
+  font-size : 30px; 
+  margin : 10px 0px;
+}
+h3{
+  font-size : 20px;
+  margin : 10px 0px; 
+}
+#top-ui{
+  border-bottom : 1px solid #ccc; 
+  padding: 10px;
+}
+#content{
+  width : 850px; 
+  margin : 0 auto;
+  height : 100%;
+}
+#left{
+  padding-left : 10px; 
+  float : left;
+  background-color : #efefef;
+  height : 100%;
+  overflow : hidden;
 }
 #words{
   float : left; 
-  width : 300px;
+  padding-top : 10px;
+  padding-left : 10px;
+  width : 290px;
+  margin-top : 10px;
+  margin-right : 10px;
+  height : 200px;
+  overflow : auto;
+  border-top : 1px solid #ccc;
 }
 #cloud{
+  padding-top : 10px;
+  padding-left : 10px;
   float : left; 
-  width : 400px;
+  width : 510px;
+  border-left : 1px solid #ccc;
+  height : 100%;
+  bottom : 0px;
 }
